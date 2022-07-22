@@ -1,7 +1,3 @@
-from argparse import ArgumentDefaultsHelpFormatter
-from sqlite3 import DatabaseError
-
-
 DATA = [
     {
         'name': 'Facundo',
