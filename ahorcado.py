@@ -1,6 +1,6 @@
 import random
 import os
-H = (
+H = [
     """
  ------
 |     |
@@ -41,18 +41,6 @@ H = (
  ------
 |     |
 |     0
-|    -+
-|
-|
-|
-|
-----------
-"""
-    ,
-"""
- ------
-|     |
-|     0
 |    -+-
 |
 |
@@ -65,18 +53,6 @@ H = (
  ------
 |     |
 |     0
-|   /-+-
-|
-|
-|
-|
-----------
-"""
-    ,
-"""
- ------
-|     |
-|     0
 |   /-+-/
 |
 |
@@ -91,33 +67,9 @@ H = (
 |     0
 |   /-+-/
 |     |
-|
-|
-|
-----------
-"""
-    ,
-"""
- ------
-|     |
-|     0
-|   /-+-/
-|     |
 |     |
 |
 |
-----------
-"""
-    ,
-"""
- ------
-|     |
-|     0
-|   /-+-/
-|     |
-|     |
-|    |
-|    |
 ----------
 """
     ,
@@ -132,7 +84,9 @@ H = (
 |    | |
 ----------
 """
-)
+]
+
+H.reverse()
 
 
 def listar(nombre):
@@ -150,7 +104,6 @@ def obtener(lista):
 def run():
     words = listar("./data.txt")
     palabra=obtener(words)
-
     ingresadas = []
     vi = 7
     letra='0'
@@ -167,7 +120,9 @@ def run():
         vidas= ['*' for _ in range(vi)]
         
         # print(check)
-        print(f'Vidas {" ".join(vidas)}')
+        # print(f'Vidas {" ".join(vidas)}')
+        
+        print(H[vi])
         print(f'\nLetras ingresadas:\n{"-".join(sorted([x.upper() for x in ingresadas]))}\n')
         letra=input('Ingresa una letra: ')
         ingresadas.append(letra)
@@ -176,9 +131,9 @@ def run():
         
         
     if vi > 0:
-        print ('\n',f"GANASTEEEE\n La palabra era {palabra}",'\n'*5)
+        print (f'\n {H[vi]}\n',f" GANASTEEEEEEEEEEEEEE\n\n  La palabra era {palabra}",'\n'*5)
     else:
-        print(f'\nAhorcado :(\nLa palabra era {palabra}\nllevabas : {li}', '\n'*5)
+        print(f'\n {H[0]}\nLa palabra era {palabra}\n\nllevabas : {li}', '\n'*5)
 
 if __name__ == '__main__':
     run()
