@@ -141,8 +141,11 @@ def run():
         interfaz(interface, ingresadas, vidas, vi)
 
         condicion = lambda letra: letra.isalpha() and len(letra)==1
-        print(condicion(letra)) 
-        letra = input('Ingrese una letra : ')           ##Ingreso de letra
+        
+        letra = lambda : input('Ingrese una letra : ')           ##Ingreso de letra
+
+        # while not condicion(letra):
+        #     interfaz()
 
         
         ingresadas.append(letra)                        ##Se añade la letra a ingresadas[Array]
