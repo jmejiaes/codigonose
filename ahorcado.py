@@ -140,6 +140,8 @@ def run():
         vidas= ['*' for _ in range(vi)]
         interfaz(interface, ingresadas, vidas, vi)
 
+        condicion = lambda letra: letra.isalpha() and len(letra)==1
+        print(condicion(letra)) 
         letra = input('Ingrese una letra : ')           ##Ingreso de letra
 
         
