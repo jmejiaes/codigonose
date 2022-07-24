@@ -99,41 +99,49 @@ def listar(nombre):
 
 def obtener(lista):
     n = random.randint(0, len(lista))
-    return lista[n]                           
+    return lista[n]
+
+
 
 def run():
     words = listar("./data.txt")
     palabra=obtener(words)
+
     ingresadas = []
-    vi = 7
+    vi = 6
     letra='0'
+    
     while True:
         check = all(elem in set(ingresadas) for elem in set(palabra))
-        if check or vi == 0 :
+
+        if check or vi == 0 :                           ##Continuidad del juego
             criterio = False
-            os.system('clear')
             break
-        os.system('clear')
-        li = ' '.join(['_' if i not in ingresadas else i for i in palabra])
-        print('\n',li,'\n')
-        if letra not in palabra: vi-=1 
-        vidas= ['*' for _ in range(vi)]
+
+        os.system('clear')                              ##Limpiar la consola
+
+        interface = ' '.join(['_' if i not in ingresadas else i for i in palabra])
+        print('\n',interface,'\n')                      ##Imprime la palbra incognita
         
-        # print(check)
-        # print(f'Vidas {" ".join(vidas)}')
-        
-        print(H[vi])
+        print(H[vi])                                    ##Ilustracion 
         print(f'\nLetras ingresadas:\n{"-".join(sorted([x.upper() for x in ingresadas]))}\n')
-        letra=input('Ingresa una letra: ')
-        ingresadas.append(letra)
-        # print(set(palabra))
-        # print(set(ingresadas))
+
+        if letra not in palabra: vi-=1                  ##Restar vidas
+        vidas= ['*' for _ in range(vi)]
+        print(f'Vidas Restantes: {" ".join(vidas)}')    ##Muestra de vidas
+
+
+        letra = input('Ingrese una letra : ')           ##Ingreso de letra
+
         
+        ingresadas.append(letra)                        ##Se añade la letra a ingresadas[Array]
         
+    os.system('clear')
+
     if vi > 0:
         print (f'\n {H[vi]}\n',f" GANASTEEEEEEEEEEEEEE\n\n  La palabra era {palabra}",'\n'*5)
     else:
-        print(f'\n {H[0]}\nLa palabra era {palabra}\n\nllevabas : {li}', '\n'*5)
+        print(f'\n {H[0]}\nLa palabra era {palabra}\n\nllevabas : {interface}', '\n'*5)
 
 if __name__ == '__main__':
     run()
