@@ -101,6 +101,22 @@ def obtener(lista):
     n = random.randint(0, len(lista))
     return lista[n]
 
+def interfaz(interface, ingresadas, vidas, vi):
+    os.system('clear')
+    print(
+        f"""
+        
+        {interface}
+
+        {H[vi]}             
+        
+        letras Ingresadas : 
+        {"-".join(sorted([x.upper() for x in ingresadas]))}
+        
+        Vidas Restantes: {" ".join(vidas)}
+        """
+        
+    )
 
 
 def run():
@@ -118,18 +134,11 @@ def run():
             criterio = False
             break
 
-        os.system('clear')                              ##Limpiar la consola
-
         interface = ' '.join(['_' if i not in ingresadas else i for i in palabra])
-        print('\n',interface,'\n')                      ##Imprime la palbra incognita
-        
-        print(H[vi])                                    ##Ilustracion 
-        print(f'\nLetras ingresadas:\n{"-".join(sorted([x.upper() for x in ingresadas]))}\n')
 
         if letra not in palabra: vi-=1                  ##Restar vidas
         vidas= ['*' for _ in range(vi)]
-        print(f'Vidas Restantes: {" ".join(vidas)}')    ##Muestra de vidas
-
+        interfaz(interface, ingresadas, vidas, vi)
 
         letra = input('Ingrese una letra : ')           ##Ingreso de letra
 
